@@ -5,23 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Task Manager</title>
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-<h1>Student Task Manager</h1>
-<p>Manage your university tasks here!</p>
 
-<form id="task-form">
-    <input
-            type="text"
-            id="task-input"
-            placeholder="Enter a new task..."
-            required
-    >
-    <button type="submit">Add Task</button>
-</form>
+<main class="container">
 
-<ul id="task-list"></ul>
+    <header class="header">
+        <h1>Student Task Manager</h1>
+        <p>Organize your studies, manage deadlines, and stay productive.</p>
+    </header>
+
+    <section class="panel">
+        <h2>Create a Task</h2>
+
+        <form id="task-form">
+            <div class="field">
+                <label for="task-input">Task Name</label>
+                <input id="task-input" type="text"
+                       placeholder="e.g. Study Java"
+                       maxlength="120" required>
+            </div>
+
+            <div class="form-row">
+                <div class="field">
+                    <label for="task-deadline">Deadline</label>
+                    <input id="task-deadline" type="date">
+                </div>
+
+                <div class="field">
+                    <label for="task-priority">Priority</label>
+                    <select id="task-priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="add-btn" type="submit">+ Add Task</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <div class="section-header">
+            <h2>My Tasks</h2>
+            <span id="task-count">0 Tasks</span>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-label">
+                <span>Overall Progress</span>
+                <span id="progress-text">0%</span>
+            </div>
+            <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="filters">
+            <div class="field">
+                <label for="filter">Filter</label>
+                <select id="filter">
+                    <option value="all">All Tasks</option>
+                    <option value="active">Active</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="sort">Sort By</label>
+                <select id="sort">
+                    <option value="newest">Newest First</option>
+                    <option value="deadline">Deadline</option>
+                    <option value="priority">Priority</option>
+                    <option value="alphabetical">Alphabetical</option>
+                </select>
+            </div>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <p id="empty-state">No tasks yet. Add your first task!</p>
+    </section>
+
+    <footer>
+        <p>Student Task Manager | Built with HTML, CSS & JavaScript</p>
+    </footer>
+
+</main>
+
 </body>
 </html>
